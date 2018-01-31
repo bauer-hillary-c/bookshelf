@@ -17,4 +17,6 @@ Types::AuthorType = GraphQL::ObjectType.define do
   field :coordinates, Types::PairType do
     description "The authors current coordinates"
   end
+
+  field :publication_years, types[types.Int]
 end
