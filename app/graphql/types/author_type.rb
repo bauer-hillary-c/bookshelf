@@ -13,4 +13,8 @@ Types::AuthorType = GraphQL::ObjectType.define do
       [obj.first_name, obj.last_name].compact.join(" ")
     }
   end
+
+  field :coordinates, Types::PairType do
+    description "The authors current coordinates"
+  end
 end
