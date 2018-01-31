@@ -7,6 +7,8 @@ Types::QueryType = GraphQL::ObjectType.define do
   field :testField, types.String do
     description "An example field added by the generator"
     resolve ->(obj, args, ctx) {
+      Rails.logger.info obj.inspect
+      Rails.logger.info ctx.query
       "Hello World!"
     }
   end
