@@ -1,3 +1,3 @@
-class USer < ActiveRecord
+class User < ApplicationRecord
   has_secure_password
 end
