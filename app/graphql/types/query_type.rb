@@ -3,11 +3,13 @@ Types::QueryType = GraphQL::ObjectType.define do
   # Add root-level fields here.
   # They will be entry points for queries on your schema.
 
-  # TODO: remove me
-  field :testField, types.String do
-    description "An example field added by the generator"
-    resolve ->(obj, args, ctx) {
-      "Hello World!"
+  field :login, types.String do
+    argument :email, types.String
+    argument :password, types.String
+
+    resolve ->(_, args, _) {
+      user = User.find_by(email: args[:email])
+      user.sessions.create.key if user.try(:authenticate, args[:password])
     }
   end
 
