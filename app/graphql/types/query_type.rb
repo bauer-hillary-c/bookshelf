@@ -13,6 +13,10 @@ Types::QueryType = GraphQL::ObjectType.define do
     }
   end
 
+  field :current_user, Types::UserType do
+    resolve ->(_, _, ctx) { ctx[:current_user] }
+  end
+
   field :author, Types::AuthorType do
     argument :id, types.ID
     description "One author"
